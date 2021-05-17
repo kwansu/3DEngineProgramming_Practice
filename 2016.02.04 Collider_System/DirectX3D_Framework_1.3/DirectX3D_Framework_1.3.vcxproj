@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4A7000F2-C91B-48BE-92D5-939B3D635F9C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DirectX3D_Framework_13</RootNamespace>
+    <ProjectName>ColliderSystem</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Include;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Lib\x86;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ASELoader.h" />
+    <ClInclude Include="cAnimationClip.h" />
+    <ClInclude Include="cAnimationKey.h" />
+    <ClInclude Include="cBone.h" />
+    <ClInclude Include="cChildObject.h" />
+    <ClInclude Include="cCollider_Box.h" />
+    <ClInclude Include="cCollider_Sphere.h" />
+    <ClInclude Include="cDeviceManager.h" />
+    <ClInclude Include="cGeometry.h" />
+    <ClInclude Include="cGrid.h" />
+    <ClInclude Include="cInputManager.h" />
+    <ClInclude Include="cLight.h" />
+    <ClInclude Include="cMianGame.h" />
+    <ClInclude Include="cObject.h" />
+    <ClInclude Include="cObjectManager.h" />
+    <ClInclude Include="cObject_BodyParts.h" />
+    <ClInclude Include="cObject_Box.h" />
+    <ClInclude Include="cObject_Camera.h" />
+    <ClInclude Include="cObject_Cube.h" />
+    <ClInclude Include="cObject_Human.h" />
+    <ClInclude Include="cObject_Limbs.h" />
+    <ClInclude Include="cObject_LocalFrame.h" />
+    <ClInclude Include="cObject_Mario.h" />
+    <ClInclude Include="cObject_Mario_Head.h" />
+    <ClInclude Include="cObject_MouseMark.h" />
+    <ClInclude Include="cObject_Pyramid.h" />
+    <ClInclude Include="cObject_SixMan.h" />
+    <ClInclude Include="cObject_ThirdMan.h" />
+    <ClInclude Include="cObject_Woman.h" />
+    <ClInclude Include="cRay.h" />
+    <ClInclude Include="cReferenceCounter.h" />
+    <ClInclude Include="cReferrers.h" />
+    <ClInclude Include="cTerrain.h" />
+    <ClInclude Include="cTimeManager.h" />
+    <ClInclude Include="iCollider.h" />
+    <ClInclude Include="InlineUtility.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="stdObjects.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="stVertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ASELoader.cpp" />
+    <ClCompile Include="cAnimationClip.cpp" />
+    <ClCompile Include="cAnimationKey.cpp" />
+    <ClCompile Include="cBone.cpp" />
+    <ClCompile Include="cChildObject.cpp" />
+    <ClCompile Include="cCollider_Box.cpp" />
+    <ClCompile Include="cCollider_Sphere.cpp" />
+    <ClCompile Include="cDeviceManager.cpp" />
+    <ClCompile Include="cGeometry.cpp" />
+    <ClCompile Include="cGrid.cpp" />
+    <ClCompile Include="cInputManager.cpp" />
+    <ClCompile Include="cLight.cpp" />
+    <ClCompile Include="cMianGame.cpp" />
+    <ClCompile Include="cObject.cpp" />
+    <ClCompile Include="cObjectManager.cpp" />
+    <ClCompile Include="cObject_BodyParts.cpp" />
+    <ClCompile Include="cObject_Box.cpp" />
+    <ClCompile Include="cObject_Camera.cpp" />
+    <ClCompile Include="cObject_Cube.cpp" />
+    <ClCompile Include="cObject_Human.cpp" />
+    <ClCompile Include="cObject_Limbs.cpp" />
+    <ClCompile Include="cObject_LocalFrame.cpp" />
+    <ClCompile Include="cObject_Mario.cpp" />
+    <ClCompile Include="cObject_Mario_Head.cpp" />
+    <ClCompile Include="cObject_MouseMark.cpp" />
+    <ClCompile Include="cObject_Pyramid.cpp" />
+    <ClCompile Include="cObject_SixMan.cpp" />
+    <ClCompile Include="cObject_ThirdMan.cpp" />
+    <ClCompile Include="cObject_Woman.cpp" />
+    <ClCompile Include="cRay.cpp" />
+    <ClCompile Include="cReferenceCounter.cpp" />
+    <ClCompile Include="cReferrers.cpp" />
+    <ClCompile Include="cTerrain.cpp" />
+    <ClCompile Include="cTimeManager.cpp" />
+    <ClCompile Include="Vertex_PC.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DirectX3D_Framework_1.3.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="DirectX3D_Framework_1.3.ico" />
+    <Image Include="small.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

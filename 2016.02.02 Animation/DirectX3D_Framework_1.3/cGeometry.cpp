@@ -1,0 +1,102 @@
+#include "stdafx.h"
+#include "cGeometry.h"
+
+
+DWORD cGeometry::s_dwTick = 0;
+
+cGeometry::cGeometry()
+	: m_pParent(NULL)
+	, m_pTexture(NULL)
+{
+	ZeroMemory(&m_mtl, sizeof(D3DMATERIAL9));
+	D3DXMatrixIdentity(&m_matLocal);
+	D3DXMatrixIdentity(&m_matWorld);
+}
+
+
+cGeometry::~cGeometry()
+{
+}
+
+void cGeometry::Update()
+{
+}
+
+
+void cGeometry::Render(D3DXMATRIXA16* pmatParent)
+{
+	UpdateLocal();
+
+	m_matWorld = m_matLocal * *pmatParent;
+
+	if (m_pTexture)
+	{
+		g_pDevice->SetTransform(D3DTS_WORLD, &m_matWorld);
+		g_pDevice->SetTexture(0, m_pTexture);
+		g_pDevice->SetMaterial(&m_mtl);
+		g_pDevice->SetFVF(Vertex_PNT::FVF);
+
+		g_pDevice->DrawPrimitiveUP(D3DPT_TRIANGLELIST
+			, m_aVertex.size() / 3
+			, &m_aVertex[0]
+			, sizeof(Vertex_PNT));
+	}
+
+	for (int i = 0; i < m_apChild.size(); ++i)
+		m_apChild[i]->Render(&m_matWorld);
+}
+
+
+void cGeometry::UpdateLocal(DWORD dwTick)
+{
+	D3DXVECTOR3 vPos;
+	D3DXQUATERNION vQua;
+
+	int size = m_aAniPos.size();
+	for (int i = 0; i < size; ++i)
+	{
+		if (m_aAniPos[i].fKeyTime > dwTick || i + 1 >= size)
+		{
+			if (i == 0)
+			{
+				vPos = m_aAniPos[1].vPos;
+				D3DXMatrixTranslation(&m_matT, vPos.x, vPos.y, vPos.z);
+			}
+			else
+			{
+				float t = m_aAniPos[i].fKeyTime - m_aAniPos[i - 1].fKeyTime;
+				t = (dwTick - m_aAniPos[i - 1].fKeyTime) / t;
+
+				D3DXVec3Lerp(&vPos, &m_aAniPos[i - 1].vPos, &m_aAniPos[i].vPos, t);
+				D3DXMatrixTranslation(&m_matT, vPos.x, vPos.y, vPos.z);
+			}
+
+			break;
+		}
+	}
+
+	size = m_aAniRot.size();
+	for (int i = 0; i < size; ++i)
+	{
+		if (m_aAniRot[i].fKeyTime > dwTick || i + 1 >= size)
+		{
+			if (i == 0)
+			{
+				vQua = m_aAniRot[i].vQuaternion;
+				D3DXMatrixRotationQuaternion(&m_matR, &vQua);
+			}
+			else
+			{
+				float t = m_aAniRot[i].fKeyTime - m_aAniRot[i - 1].fKeyTime;
+				t = (dwTick - m_aAniRot[i - 1].fKeyTime) / t;
+
+				D3DXQuaternionSlerp(&vQua, &m_aAniRot[i - 1].vQuaternion, &m_aAniRot[i].vQuaternion, t);
+				D3DXMatrixRotationQuaternion(&m_matR, &vQua);
+			}
+
+			break;
+		}
+	}
+
+	m_matLocal = m_matR * m_matT;
+}

@@ -1,0 +1,34 @@
+#pragma once
+#include "cObject.h"
+#include "ASELoader.h"
+#include "cCollider_Terrain.h"
+#include "cRay.h"
+#include "cHeightMap.h"
+
+class cObject_Woman :
+	public cObject
+{
+public:
+	cGeometry*	m_pStandRoot;
+	cGeometry*	m_pRunRoot;
+
+	//cCollider_Terrain*		m_pTerrain;
+	cHeightMap*	m_pHeightMap;
+	
+	D3DXVECTOR3	m_vSpeed;
+	bool		m_bBottom;
+	bool		m_bRun;
+
+	cRay		m_ray;
+
+	ASELoader*	m_pLoader;
+	ASELoader*	m_pLoader2;
+
+public:
+	cObject_Woman();
+	~cObject_Woman();
+	void Setup();
+	void Update();
+	void Render();
+};
+
